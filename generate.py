@@ -1,22 +1,29 @@
 from email import header
 import pyrosim.pyrosim as pyrosim
 
-pyrosim.Start_SDF("boxes.sdf")
+def Create_World():
+    pyrosim.Start_SDF("world.sdf")
 
+    pyrosim.Send_Cube(name="Box", pos=[5,5,.5] , size=[1,1,1])
 
-# pyrosim.Send_Cube(name="Box", pos=[x,y,z] , size=[length, width, height])
-# pyrosim.Send_Cube(name="Box2", pos=[x+1,y,z+1] , size=[length, width, height])
+    pyrosim.End()
 
-def buildStack(i :int, xPos :int, yPos :int):
-    [length, width, height] = [1, 1, 1]
-    z = .5
-    for i in range(10):
-        pyrosim.Send_Cube(name="Box_{}".format(i), pos=[xPos,yPos,z] , size=[length, width, height])
-        [length, width, height] = [length*.9, width*.9, height*.9]
-        z = z + height + .5
+def Create_Robot():
+    pyrosim.Start_URDF("body.urdf")
 
-for row in range(4):
-    for col in range(4):
-        buildStack(10, row, col)
+    pyrosim.Send_Cube(name="Link0", pos=[.5,.5,.5] , size=[1,1,1])
 
-pyrosim.End()
+    pyrosim.Send_Joint(name="Link0_Link1", parent="Link0", child ="Link1",
+        type="revolute",position=[1,.5,1])
+
+    pyrosim.Send_Cube(name="Link1", pos=[.5,0,.5] , size=[1,1,1])
+
+    pyrosim.Send_Joint(name="Link1_Link2", parent="Link1", child ="Link2",
+        type="revolute",position=[1,0,0])
+
+    pyrosim.Send_Cube(name="Link2", pos=[.5,0,-.5] , size=[1,1,1])
+
+    pyrosim.End()
+ 
+Create_Robot()
+Create_World()
