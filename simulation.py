@@ -13,7 +13,7 @@ robotId = p.loadURDF("body.urdf")
 worldId = p.loadSDF("world.sdf")
 pyrosim.Prepare_To_Simulate(robotId)
 
-numSteps = 100
+numSteps = 1000
 torsoValues = np.zeros(numSteps)
 backLegValues = np.zeros(numSteps)
 
