@@ -12,11 +12,11 @@ class MOTOR:
     def Prepare_To_Act(self):
         self.motorValues = np.linspace(0, 2*np.pi, c.numSteps)
 
-        if (self.jointName == "BackLeg_Torso"):
-            self.motorValues = self.motorValues * .5
+        # if (self.jointName == "BackLeg_Torso"):
+        #     self.motorValues = self.motorValues * .5
 
-    def Set_Value(self, robotId, t):
-        self.targetAngle = c.amplitude * np.sin(c.frequency * self.motorValues[t] + c.phaseOffset)
+    def Set_Value(self, robotId, desiredAngle):
+        self.targetAngle = c.amplitude * np.sin(c.frequency * desiredAngle + c.phaseOffset)
         pyrosim.Set_Motor_For_Joint(bodyIndex=robotId, jointName=self.jointName,
             controlMode=p.POSITION_CONTROL, targetPosition=self.targetAngle, maxForce=500)
 
