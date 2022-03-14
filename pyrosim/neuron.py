@@ -70,9 +70,20 @@ class NEURON:
  
         self.Set_Value(pyrosim.Get_Touch_Sensor_Value_For_Link(self.Get_Link_Name()))
 
-    def Update_Hidden_Or_Motor_Neuron(self):
+    def Update_Hidden_Or_Motor_Neuron(self,neurons,synapses):
 
+        for key in synapses.keys():
+            if self.Get_Name() == key[1]:
+                weight = synapses[key].Get_Weight()
+                name = key[0]
+                presynapse_value = neurons[name].Get_Value()
+                self.Allow_Presynaptic_Neuron_To_Influence_Me(weight,presynapse_value)
+        self.Threshold()
         self.Set_Value(math.pi/4)
+
+    def Allow_Presynaptic_Neuron_To_Influence_Me(self, weight:float, presynapse_value:float):
+        result = presynapse_value * weight
+        self.Add_To_Value(result)
 
 # -------------------------- Private methods -------------------------
 
