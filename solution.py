@@ -1,12 +1,18 @@
 import os
+import random
 import numpy as np
 import pyrosim.pyrosim as pyrosim
 import random
 
 class SOLUTION:
+
     def __init__(self):
         self.weights = np.random.rand(3,2)
         self.weights = self.weights * 2 - 1
+
+    def Mutate(self):
+        rand_select = random.randint(0,2)
+
 
     def Evaluate(self):
         self.Create_World()

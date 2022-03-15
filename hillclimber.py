@@ -1,10 +1,12 @@
 from solution import SOLUTION
+from copy import deepcopy 
 import constants as c
 
 class HILL_CLIMBER:
 
     def __init__(self):
         self.parent = SOLUTION()
+        self.child = deepcopy(self.parent)
 
     def Evolve(self):
         self.parent.Evaluate()
@@ -21,7 +23,7 @@ class HILL_CLIMBER:
         pass
 
     def Mutate(self):
-        pass
+        self.child.Mutate()
 
     def Evaluate(self):
         pass
