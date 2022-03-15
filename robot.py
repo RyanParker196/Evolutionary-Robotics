@@ -39,3 +39,4 @@ class ROBOT:
 
                 print("NeuronName={}, JointName={}, DesiredAngle={}".format(
                     neuronName, jointName, desiredAngle))
+

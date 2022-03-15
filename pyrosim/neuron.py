@@ -79,7 +79,6 @@ class NEURON:
                 presynapse_value = neurons[name].Get_Value()
                 self.Allow_Presynaptic_Neuron_To_Influence_Me(weight,presynapse_value)
         self.Threshold()
-        self.Set_Value(math.pi/4)
 
     def Allow_Presynaptic_Neuron_To_Influence_Me(self, weight:float, presynapse_value:float):
         result = presynapse_value * weight
