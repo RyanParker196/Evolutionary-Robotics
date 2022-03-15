@@ -6,6 +6,7 @@ from world import WORLD
 from robot import ROBOT
 
 class SIMULATION:
+
     def __init__(self):
 
         self.physicsClient = p.connect(p.GUI)
@@ -26,7 +27,11 @@ class SIMULATION:
             self.robot.Sense(i)
             self.robot.Think()
             self.robot.Act(i)
+            self.Get_Fitness()
 
     def __del__(self):
         p.disconnect()
+
+    def Get_Fitness(self):
+        self.robot.Get_Fitness()
 

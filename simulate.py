@@ -2,5 +2,6 @@ import constants as c
 from simulation import SIMULATION
 
 simulation = SIMULATION()
-SIMULATION.Run(simulation, c.numSteps)
+simulation.Run(10)
+#simulation.Run(c.numSteps)
 del simulation

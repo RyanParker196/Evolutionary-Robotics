@@ -39,3 +39,12 @@ class ROBOT:
 
                 print("NeuronName={}, JointName={}, DesiredAngle={}".format(
                     neuronName, jointName, desiredAngle))
+
+    def Get_Fitness(self):
+        stateOfLinkZero = p.getLinkState(self.robotId,0)
+        positionOfLinkZero = stateOfLinkZero[0]
+        x = positionOfLinkZero[0]
+        f = open("fitness.txt","w")
+        f.write(str(x))
+        f.close()
+

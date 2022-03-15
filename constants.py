@@ -1,4 +1,5 @@
 import numpy as np
+numGenerations = 2
 numSteps = 1000
 
 amplitude = np.pi / 4
