@@ -6,7 +6,6 @@ class HILL_CLIMBER:
 
     def __init__(self):
         self.parent = SOLUTION()
-        self.child = deepcopy(self.parent)
 
     def Evolve(self):
         self.parent.Evaluate()
@@ -16,11 +15,11 @@ class HILL_CLIMBER:
     def Evolve_For_One_Generation(self):
         self.Spawn()
         self.Mutate()
-        self.child.Evaluate
+        self.child.Evaluate()
         self.Select()
 
     def Spawn(self):
-        pass
+        self.child = deepcopy(self.parent)
 
     def Mutate(self):
         self.child.Mutate()

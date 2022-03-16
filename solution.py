@@ -7,11 +7,12 @@ import random
 class SOLUTION:
 
     def __init__(self):
-        self.weights = np.random.rand(3,2)
-        self.weights = self.weights * 2 - 1
+        self.weights = np.random.rand(3,2) * 2 - 1
 
     def Mutate(self):
-        rand_select = random.randint(0,2)
+        randomRow = random.randint(0,2)
+        randomColumn = random.randint(0,1)
+        self.weights[randomRow,randomColumn] = random.random() * 2 - 1
 
 
     def Evaluate(self):
@@ -20,7 +21,7 @@ class SOLUTION:
         self.Create_Body()
         os.system("python3 simulate.py")
 
-        # close loop
+        # Write fitness to file
         f = open("fitness.txt","r")
         self.fitness = float(f.read())
         f.close()
