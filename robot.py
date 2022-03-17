@@ -23,7 +23,7 @@ class ROBOT:
 
     def Think(self):
         self.nn.Update()
-        self.nn.Print()
+        # self.nn.Print()
 
     def Sense(self, t):
         for sensor in self.sensors.values():
@@ -37,14 +37,16 @@ class ROBOT:
 
                 self.motors[jointName].Set_Value(self.robotId, desiredAngle)
 
-                print("NeuronName={}, JointName={}, DesiredAngle={}".format(
-                    neuronName, jointName, desiredAngle))
+                # print("NeuronName={}, JointName={}, DesiredAngle={}".format(
+                #     neuronName, jointName, desiredAngle))
 
     def Get_Fitness(self):
         stateOfLinkZero = p.getLinkState(self.robotId,0)
         positionOfLinkZero = stateOfLinkZero[0]
-        x = positionOfLinkZero[0]
+        fitnessScore = -positionOfLinkZero[0]
+        
+        # Write fitness score to txt file
         f = open("fitness.txt","w")
-        f.write(str(x))
+        f.write(str(fitnessScore))
         f.close()
 

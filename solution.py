@@ -15,11 +15,11 @@ class SOLUTION:
         self.weights[randomRow,randomColumn] = random.random() * 2 - 1
 
 
-    def Evaluate(self):
+    def Evaluate(self, directOrGui):
         self.Create_World()
         self.Create_Brain()
         self.Create_Body()
-        os.system("python3 simulate.py")
+        os.system("python3 simulate.py "+directOrGui)
 
         # Write fitness to file
         f = open("fitness.txt","r")

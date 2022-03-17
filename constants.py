@@ -1,6 +1,6 @@
 import numpy as np
-numGenerations = 2
-numSteps = 1000
+numGenerations = 1
+numSteps = 300
 
 amplitude = np.pi / 4
 frequency = 10
