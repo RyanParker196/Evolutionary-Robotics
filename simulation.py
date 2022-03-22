@@ -7,7 +7,7 @@ from robot import ROBOT
 
 class SIMULATION:
 
-    def __init__(self, directOrGui):
+    def __init__(self, directOrGui, simulationID):
         if directOrGui == 'GUI':
             self.physicsClient = p.connect(p.GUI)
         elif directOrGui == 'DIRECT':
@@ -20,7 +20,7 @@ class SIMULATION:
 
         self.world = WORLD()
         
-        self.robot = ROBOT()
+        self.robot = ROBOT(simulationID)
         pyrosim.Prepare_To_Simulate(self.robot.robotId)
         self.robot.Prepare_To_Sense()
         self.robot.Prepare_To_Act()

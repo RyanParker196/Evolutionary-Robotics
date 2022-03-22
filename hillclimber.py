@@ -31,4 +31,4 @@ class HILL_CLIMBER:
 
     def ShowBest(self):
         self.parent.Evaluate('GUI')
-        print("Best fitness score = "+self.parent.fitness)
+        print("Best fitness score = "+str(self.parent.fitness))

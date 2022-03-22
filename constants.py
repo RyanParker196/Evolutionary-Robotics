@@ -1,5 +1,7 @@
 import numpy as np
+
 numGenerations = 1
+populationSize = 2
 numSteps = 300
 
 amplitude = np.pi / 4

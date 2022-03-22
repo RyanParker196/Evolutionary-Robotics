@@ -1,8 +1,6 @@
 import os
-from hillclimber import HILL_CLIMBER
+from parallelhillclimber import PARALLEL_HILL_CLIMBER
 
-hc = HILL_CLIMBER()
-hc.Evolve()
-x = input("ready?")
-if x == 'y':
-    hc.ShowBest()
+phc = PARALLEL_HILL_CLIMBER()
+phc.Evolve()
+phc.ShowBest()

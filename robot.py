@@ -7,9 +7,9 @@ from motor import MOTOR
 
 
 class ROBOT:
-    def __init__(self):
+    def __init__(self, simulationID):
         self.robotId = p.loadURDF("body.urdf")
-        self.nn = NEURAL_NETWORK("brain.nndf")
+        self.nn = NEURAL_NETWORK("brain{}.nndf".format(simulationID))
 
     def Prepare_To_Sense(self):
         self.sensors = {}
