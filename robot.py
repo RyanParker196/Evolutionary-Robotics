@@ -1,3 +1,4 @@
+import os
 from ntpath import join
 import pybullet as p
 import pyrosim.pyrosim as pyrosim
@@ -7,9 +8,11 @@ from motor import MOTOR
 
 
 class ROBOT:
-    def __init__(self):
+    def __init__(self, simulationID):
+        self.simulationID = simulationID
         self.robotId = p.loadURDF("body.urdf")
-        self.nn = NEURAL_NETWORK("brain.nndf")
+        self.nn = NEURAL_NETWORK("brain{}.nndf".format(simulationID))
+        os.system('del brain{}.nndf'.format(simulationID))
 
     def Prepare_To_Sense(self):
         self.sensors = {}
@@ -34,11 +37,7 @@ class ROBOT:
             if self.nn.Is_Motor_Neuron(neuronName):
                 jointName = self.nn.Get_Motor_Neurons_Joint(neuronName)
                 desiredAngle = self.nn.Get_Value_Of(neuronName)
-
                 self.motors[jointName].Set_Value(self.robotId, desiredAngle)
-
-                # print("NeuronName={}, JointName={}, DesiredAngle={}".format(
-                #     neuronName, jointName, desiredAngle))
 
     def Get_Fitness(self):
         stateOfLinkZero = p.getLinkState(self.robotId,0)
@@ -46,7 +45,8 @@ class ROBOT:
         fitnessScore = -positionOfLinkZero[0]
         
         # Write fitness score to txt file
-        f = open("fitness.txt","w")
+        f = open("tmp{}.txt".format(self.simulationID),"w")
         f.write(str(fitnessScore))
         f.close()
+        os.rename("tmp"+str(self.simulationID)+".txt", "fitness"+str(self.simulationID)+".txt")
 
