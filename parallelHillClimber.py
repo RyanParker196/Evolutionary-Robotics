@@ -46,7 +46,6 @@ class PARALLEL_HILL_CLIMBER:
             self.children[key] = deepcopy(self.parents[key])
             self.children[key].Set_ID(self.nextAvailableID)
             self.nextAvailableID = self.nextAvailableID + 1
-        print(self.children)
         
     def Mutate(self):
         for key in self.children:
@@ -62,6 +61,8 @@ class PARALLEL_HILL_CLIMBER:
 
     def ShowBest(self):
         self.lowestFitness = self.parents[0]
+        print(self.lowestFitness.fitness)
+        print("starting sim")
         self.lowestFitness.Start_Simulation('GUI')
         # self.parent.Evaluate('GUI')
         # print("Best fitness score = "+self.parent.fitness)
