@@ -26,7 +26,6 @@ class ROBOT:
 
     def Think(self):
         self.nn.Update()
-        # self.nn.Print()
 
     def Sense(self, t):
         for sensor in self.sensors.values():

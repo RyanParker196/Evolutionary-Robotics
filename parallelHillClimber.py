@@ -19,11 +19,13 @@ class PARALLEL_HILL_CLIMBER:
         self.Evaluate(self.parents)
         #from evaluate
         self.Evolve_For_One_Generation()
+        self.Print()
+        self.ShowBest()
 
     def Evaluate(self, solutions):
         for key in solutions:
             self.parent = solutions[key]
-            self.parent.Start_Simulation('GUI')
+            self.parent.Start_Simulation('DIRECT')
         # self.parent.Evaluate('GUI')
         # for currentGeneration in range(c.numGenerations):
         #     self.Evolve_For_One_Generation()
@@ -31,14 +33,12 @@ class PARALLEL_HILL_CLIMBER:
         for key in solutions:
             self.parent = solutions[key]
             self.parent.Wait_For_Simulation_To_End()
-            print(self.parent.fitness)
 
     def Evolve_For_One_Generation(self):
         self.Spawn()
         self.Mutate()
         self.Evaluate(self.children)
-        exit()
-        # self.Select()
+        self.Select()
 
     def Spawn(self):
         self.children = {}
@@ -53,10 +53,22 @@ class PARALLEL_HILL_CLIMBER:
             self.children[key].Mutate()
 
     def Select(self):
-        if (self.child.fitness > self.parent.fitness):
-            self.parent = self.child
+        for key in self.parents:
+            childFitness = self.children[key]
+            parentFitness = self.parents[key]
+
+            if (childFitness.fitness  > parentFitness.fitness):
+                self.parents[key] = self.children[key]
 
     def ShowBest(self):
-        pass
+        self.lowestFitness = self.parents[0]
+        self.lowestFitness.Start_Simulation('GUI')
         # self.parent.Evaluate('GUI')
         # print("Best fitness score = "+self.parent.fitness)
+
+    def Print(self):
+        print()
+        for key in self.parents:
+            print('Parent {} fitness = {}'.format(key, self.parents[key].fitness))
+            print('Child {} fitness = {}'.format(key, self.parents[key].fitness))
+        print()
