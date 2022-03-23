@@ -1,3 +1,4 @@
+import os
 import pybullet as p
 import time
 import pyrosim.pyrosim as pyrosim
@@ -8,6 +9,7 @@ from robot import ROBOT
 class SIMULATION:
 
     def __init__(self, directOrGui, simulationID):
+        self.simulationID = simulationID
         if directOrGui == 'GUI':
             self.physicsClient = p.connect(p.GUI)
         elif directOrGui == 'DIRECT':
@@ -34,6 +36,7 @@ class SIMULATION:
             self.robot.Think()
             self.robot.Act(i)
             self.Get_Fitness()
+        os.system('rename tmp{}.txt fitness{}.txt'.format(self.simulationID,self.simulationID))
 
     def __del__(self):
         p.disconnect()

@@ -2,7 +2,7 @@ import numpy as np
 
 numGenerations = 1
 populationSize = 2
-numSteps = 300
+numSteps = 100
 
 amplitude = np.pi / 4
 frequency = 10

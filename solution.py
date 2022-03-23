@@ -1,5 +1,6 @@
 import os
 import random
+import time
 import numpy as np
 import pyrosim.pyrosim as pyrosim
 import random
@@ -18,9 +19,10 @@ class SOLUTION:
         randomColumn = random.randint(0,1)
         self.weights[randomRow,randomColumn] = random.random() * 2 - 1
 
+    def Evaluate(self, directOrGui):
+        pass
 
-    def Evaluate(self, directOrGui, ):
-
+    def Start_Simulation(self, directOrGui):
         # Generate robot
         self.Create_World()
         self.Create_Brain()
@@ -29,10 +31,19 @@ class SOLUTION:
         # Run simulation
         os.system("start /B python3 simulate.py "+directOrGui+" "+str(self.myID))
 
-        # Write fitness to file
-        f = open("fitness.txt","r")
+    def Wait_For_Simulation_To_End(self):
+        # Wait for fitness to exist
+        fitnessFileName = "fitness{}.txt".format(self.myID) 
+        while not os.path.exists(fitnessFileName):
+            time.sleep(0.01)
+
+        # Read fitness from file
+        f = open("fitness{}.txt".format(self.myID),"r")
         self.fitness = float(f.read())
         f.close()
+
+        # Delete fitness
+        os.system('del fitness{}.txt'.format(self.myID))
 
     def Create_World(self):
         pyrosim.Start_SDF("world.sdf")
