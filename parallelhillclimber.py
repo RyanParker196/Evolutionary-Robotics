@@ -10,6 +10,8 @@ class PARALLEL_HILL_CLIMBER:
         os.system('del brain*.nndf')
         os.system('del fitness*.txt')
         os.system('del tmp*.txt')
+
+        # Init parent solutions
         self.nextAvailableID = 0
         self.parents = {}
         for i in range(c.populationSize):
@@ -20,6 +22,7 @@ class PARALLEL_HILL_CLIMBER:
         self.Evaluate(self.parents)
 
         for currentGeneration in range(c.numGenerations):
+            print("Evolve for generation {}".format(currentGeneration))
             self.Evolve_For_One_Generation()
 
     def Evolve_For_One_Generation(self):
@@ -51,8 +54,8 @@ class PARALLEL_HILL_CLIMBER:
             p = self.parents[key].fitness
             c = self.children[key].fitness
 
-            # if child > parent
-            if (c > p):
+            # if child < parent
+            if (c < p):
                 # Child becomes new parent
                 self.parents[key] = self.children[key]
 
@@ -64,14 +67,11 @@ class PARALLEL_HILL_CLIMBER:
             solutions[key].Wait_For_Simulation_To_End()
 
     def ShowBest(self):
-        # self.parents[0].Start_Simulation('GUI')
-        minFit = 1
-        minKey = 0
+        minFit = 10
         for key in self.parents:
             fit = self.parents[key].fitness
             if (fit < minFit):
                 minFit = fit
                 minKey = key
+        print("Best fitness of parent {} = {}".format(minKey,self.parents[minKey].fitness))
         self.parents[minKey].Start_Simulation('GUI')
-        # self.parent.Evaluate('GUI')
-        # print("Best fitness score = "+str(self.parent.fitness))

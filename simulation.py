@@ -29,14 +29,12 @@ class SIMULATION:
     
     def Run(self, numSteps):
         for i in range(numSteps):
-            print("\nRunning simulation",i)
-            time.sleep(1/6000)
+            time.sleep(1/600)
             p.stepSimulation()
             self.robot.Sense(i)
             self.robot.Think()
             self.robot.Act(i)
-            self.Get_Fitness()
-        os.system('rename tmp{}.txt fitness{}.txt'.format(self.simulationID,self.simulationID))
+        self.Get_Fitness()
 
     def __del__(self):
         p.disconnect()

@@ -42,20 +42,16 @@ class ROBOT:
                 self.motors[jointName].Set_Value(self.robotId, desiredAngle)
 
     def Get_Fitness(self):
+        
+        # Calculate fitness
         stateOfLinkZero = p.getLinkState(self.robotId,0)
         positionOfLinkZero = stateOfLinkZero[0]
-        fitnessScore = -positionOfLinkZero[0]
+        fitnessScore = positionOfLinkZero[0]
         
         # Write fitness score to txt file
-        sleep(1/6)
         f = open("tmp{}.txt".format(self.simulationID),"w")
         f.write(str(fitnessScore))
         f.close()
         
-        # Rename tmp -> fitness
-        # TODO: Windows bug, this is a workaround
-        # DEL fitness#.txt before rename tmp file
-        # os.system('del fitness{}.txt'.format(self.simulationID))
-        # os.rename("tmp"+str(self.simulationID)+".txt" , "fitness"+str(self.simulationID)+".txt")
-        # os.system('rename tmp{}.txt fitness{}.txt'.format(self.simulationID,self.simulationID))
-
+        # Rename after finished writing to tmp
+        os.system('rename tmp{}.txt fitness{}.txt'.format(self.simulationID,self.simulationID))
