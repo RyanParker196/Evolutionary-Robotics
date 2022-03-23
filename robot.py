@@ -1,5 +1,6 @@
 from ntpath import join
 import os
+from time import sleep
 import pybullet as p
 import pyrosim.pyrosim as pyrosim
 from pyrosim.neuralNetwork import NEURAL_NETWORK
@@ -46,6 +47,7 @@ class ROBOT:
         fitnessScore = -positionOfLinkZero[0]
         
         # Write fitness score to txt file
+        sleep(1/6)
         f = open("tmp{}.txt".format(self.simulationID),"w")
         f.write(str(fitnessScore))
         f.close()
