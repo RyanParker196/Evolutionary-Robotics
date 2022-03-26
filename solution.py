@@ -29,7 +29,7 @@ class SOLUTION:
         self.Create_Body()
 
         # Run simulation
-        os.system("start /B python3 simulate.py "+directOrGui+" "+str(self.myID))
+        os.system("python3 simulate.py "+str(directOrGui)+" "+str(self.myID)+" &")
 
     def Wait_For_Simulation_To_End(self):
         # Wait for fitness to exist
@@ -43,7 +43,7 @@ class SOLUTION:
         f.close()
 
         # Delete fitness
-        os.system('del fitness{}.txt'.format(self.myID))
+        os.system('rm fitness{}.txt'.format(self.myID))
 
     def Create_World(self):
         pyrosim.Start_SDF("world.sdf")

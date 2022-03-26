@@ -7,9 +7,9 @@ class PARALLEL_HILL_CLIMBER:
 
     def __init__(self):
         # Clear files
-        os.system('del brain*.nndf')
-        os.system('del fitness*.txt')
-        os.system('del tmp*.txt')
+        os.system('rm brain*.nndf')
+        os.system('rm fitness*.txt')
+        os.system('rm tmp*.txt')
 
         # Init parent solutions
         self.nextAvailableID = 0

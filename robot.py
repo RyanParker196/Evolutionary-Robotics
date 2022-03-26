@@ -14,7 +14,7 @@ class ROBOT:
         
         # Read and delete brain
         self.nn = NEURAL_NETWORK("brain{}.nndf".format(simulationID))
-        os.system('del brain{}.nndf'.format(self.simulationID))
+        os.system('rm brain{}.nndf'.format(self.simulationID))
 
     def Prepare_To_Sense(self):
         self.sensors = {}
@@ -54,4 +54,4 @@ class ROBOT:
         f.close()
         
         # Rename after finished writing to tmp
-        os.system('rename tmp{}.txt fitness{}.txt'.format(self.simulationID,self.simulationID))
+        os.system('mv tmp{}.txt fitness{}.txt'.format(self.simulationID,self.simulationID))
