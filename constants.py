@@ -1,10 +1,10 @@
 import numpy as np
 
-numSensorNeurons = 5
-numMotorNeurons = 4
+numSensorNeurons = 6
+numMotorNeurons = 5
 
-numGenerations = 1
-populationSize = 1
+numGenerations = 10
+populationSize = 10
 numSteps = 1000
 
 amplitude2 = np.pi / 4
