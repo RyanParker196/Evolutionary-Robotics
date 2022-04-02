@@ -1,4 +1,5 @@
 from ntpath import join
+import shutil
 import constants as c
 import os
 from time import sleep
@@ -15,7 +16,7 @@ class ROBOT:
         
         # Read and delete brain
         self.nn = NEURAL_NETWORK("brain{}.nndf".format(simulationID))
-        os.system('rm brain{}.nndf'.format(self.simulationID))
+        os.remove('brain{}.nndf'.format(self.simulationID))
 
     def Prepare_To_Sense(self):
         self.sensors = {}
@@ -55,4 +56,5 @@ class ROBOT:
         f.close()
         
         # Rename after finished writing to tmp
-        os.system('mv tmp{}.txt fitness{}.txt'.format(self.simulationID,self.simulationID))
+        shutil.move(f"tmp{self.simulationID}.txt", f"fitness{self.simulationID}.txt")
+

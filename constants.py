@@ -5,9 +5,9 @@ motorJointRange = 0.3
 numSensorNeurons = 6
 numMotorNeurons = 5
 
-numGenerations = 20
-populationSize = 10
-numSteps = 1000
+numGenerations = 2
+populationSize = 1
+numSteps = 100
 
 amplitude2 = .5
 frequency2 = .5

@@ -1,4 +1,5 @@
 import os
+from clean import clean
 from solution import SOLUTION
 from copy import deepcopy
 import constants as c
@@ -6,10 +7,7 @@ import constants as c
 class PARALLEL_HILL_CLIMBER:
 
     def __init__(self):
-        # Clear files
-        os.system('rm brain*.nndf')
-        os.system('rm fitness*.txt')
-        os.system('rm tmp*.txt')
+        clean()
 
         # Init parent solutions
         self.nextAvailableID = 0
