@@ -1,4 +1,3 @@
-
 import solution
 
 sol = solution.SOLUTION(0)

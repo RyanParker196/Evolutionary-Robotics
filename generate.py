@@ -4,7 +4,7 @@ import random
 def Create_World():
     pyrosim.Start_SDF("world.sdf")
 
-    pyrosim.Send_Cube(name="Box", pos=[5,5,.5] , size=[1,1,1])
+    pyrosim.Send_Cube(name="Box", pos=[0,0,0] , size=[1,1,1])
 
     pyrosim.End()
 
@@ -47,5 +47,5 @@ def Create_Body():
     pyrosim.End()
 
 Create_World()
-Create_Brain()
-Create_Body()
+# Create_Brain()
+# Create_Body()

@@ -1,5 +1,4 @@
 import os
-from clean import clean
 from solution import SOLUTION
 from copy import deepcopy
 import constants as c
@@ -7,8 +6,6 @@ import constants as c
 class PARALLEL_HILL_CLIMBER:
 
     def __init__(self):
-        clean()
-
         # Init parent solutions
         self.nextAvailableID = 0
         self.parents = {}
