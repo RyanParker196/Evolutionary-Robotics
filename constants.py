@@ -6,17 +6,17 @@ yLeg = .2
 
 motorJointRange = 0.3
 
-numSensorNeurons = 6
-numMotorNeurons = 5
+numSensorNeurons = 7
+numMotorNeurons = 6
 
-numGenerations = 1
-populationSize = 1
-numSteps = 1000
+numGenerations = 5
+populationSize = 12
+numSteps = 100
 
-amplitude2 = .5
-frequency2 = .5
-phaseOffset2 = np.pi / 2
+# amplitude2 = .5
+# frequency2 = .5
+# phaseOffset2 = np.pi / 2
 
-amplitude = np.pi / 4
+amplitude = np.pi / 2
 frequency = 1
 phaseOffset = 0

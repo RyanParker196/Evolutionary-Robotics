@@ -58,4 +58,3 @@ class ROBOT:
         
         # Rename after finished writing to tmp
         shutil.move(f"tmp{self.simulationID}.txt", f"fitness{self.simulationID}.txt")
-
