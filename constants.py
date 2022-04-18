@@ -9,13 +9,9 @@ motorJointRange = 0.3
 numSensorNeurons = 7
 numMotorNeurons = 6
 
-numGenerations = 5
+numGenerations = 20
 populationSize = 12
-numSteps = 100
-
-# amplitude2 = .5
-# frequency2 = .5
-# phaseOffset2 = np.pi / 2
+numSteps = 1000
 
 amplitude = np.pi / 2
 frequency = 1

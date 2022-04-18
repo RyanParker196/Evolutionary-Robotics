@@ -28,7 +28,6 @@ class ROBOT:
         for jointName in pyrosim.jointNamesToIndices:
             self.motors[jointName] = MOTOR(jointName)
 
-    # TODO
     def Think(self):
         self.nn.Update()
  

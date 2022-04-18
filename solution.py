@@ -4,7 +4,6 @@ import time
 from turtle import pos
 import numpy as np
 import pyrosim.pyrosim as pyrosim
-import random
 import constants as c
 
 class SOLUTION:
@@ -28,8 +27,10 @@ class SOLUTION:
         self.Create_Body()
 
         # Run simulation
-        os.system("start /B python3 simulate.py " +
-                  directOrGui + " " + str(self.myID))
+        os.system("python3 simulate.py " + directOrGui + " " + str(self.myID) + " &")
+
+        # Windows start in parallel
+        # os.system("start /B python3 simulate.py " + directOrGui + " " + str(self.myID))
 
     def Wait_For_Simulation_To_End(self):
         # Wait for fitness to exist
@@ -48,8 +49,8 @@ class SOLUTION:
     def Create_World(self):
         pyrosim.Start_SDF("world.sdf")
 
-        pyrosim.Send_Cube(name="Box", pos=[-3,0,2.5] , size=[1,1,1])
-        pyrosim.Send_Cube(name="Stand", pos=[-3,0,1] , size=[2,2,2])
+        pyrosim.Send_Cube(name="Box", pos=[-9,0,2.5] , size=[1,1,1])
+        pyrosim.Send_Cube(name="Stand", pos=[-9,0,1] , size=[2,2,2])
 
         pyrosim.End()
 
