@@ -22,15 +22,15 @@ class SOLUTION:
 
     def Start_Simulation(self, directOrGui):
         # Generate robot
-        self.Create_World()
+        # self.Create_World()
         self.Create_Brain()
         self.Create_Body()
 
         # Run simulation
-        os.system("python3 simulate.py " + directOrGui + " " + str(self.myID) + " &")
+        # os.system("python3 simulate.py " + directOrGui + " " + str(self.myID) + " &")
 
         # Windows start in parallel
-        # os.system("start /B python3 simulate.py " + directOrGui + " " + str(self.myID))
+        os.system("start /B python3 simulate.py " + directOrGui + " " + str(self.myID))
 
     def Wait_For_Simulation_To_End(self):
         # Wait for fitness to exist
@@ -49,8 +49,8 @@ class SOLUTION:
     def Create_World(self):
         pyrosim.Start_SDF("world.sdf")
 
-        pyrosim.Send_Cube(name="Box", pos=[-9,0,2.5] , size=[1,1,1])
-        pyrosim.Send_Cube(name="Stand", pos=[-9,0,1] , size=[2,2,2])
+        pyrosim.Send_Cube(name="Box", pos=[9,0,2.5] , size=[1,1,1])
+        pyrosim.Send_Cube(name="Stand", pos=[9,0,1] , size=[2,2,2])
 
         pyrosim.End()
 

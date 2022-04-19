@@ -12,6 +12,7 @@ from motor import MOTOR
 class ROBOT:
     def __init__(self, simulationID):
         self.robotId = p.loadURDF("body.urdf")
+        self.worldId = p.loadSDF("world.sdf")
         self.simulationID = simulationID
         
         # Read and delete brain

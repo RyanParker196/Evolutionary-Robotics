@@ -4,15 +4,17 @@ import numpy as np
 xLeg = .2
 yLeg = .2
 
+sleepTime = 1/1000
+
 motorJointRange = 0.3
 
 numSensorNeurons = 7
 numMotorNeurons = 6
 
-numGenerations = 20
+numGenerations = 10
 populationSize = 12
-numSteps = 1000
+numSteps = 500
 
-amplitude = np.pi / 2
-frequency = 1
-phaseOffset = 0
+amplitude = np.pi / 4
+frequency = 5
+phaseOffset = 1/3
