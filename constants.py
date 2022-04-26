@@ -11,8 +11,8 @@ motorJointRange = 0.3
 numSensorNeurons = 7
 numMotorNeurons = 6
 
-numGenerations = 4
-populationSize = 12
+numGenerations = 10
+populationSize = 10
 numSteps = 500
 
 amplitude = np.pi / 4

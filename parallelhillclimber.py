@@ -22,12 +22,22 @@ class PARALLEL_HILL_CLIMBER:
             self.Evolve_For_One_Generation(currentGeneration)
 
     def Evolve_For_One_Generation(self, currentGeneration):
+        self.FindBest()
         self.Spawn()
         self.Mutate()
         self.Evaluate(self.children)
         self.Print()
         self.Select()
         self.StoreResults(currentGeneration)
+
+    def FindBest(self):
+        maxFit = -10
+        for key in self.parents:
+            fit = self.parents[key].fitness
+            if (fit > maxFit):
+                maxFit = fit
+                maxKey = key
+        self.best = self.parents[maxKey]
 
     def StoreResults(self, currentGeneration):
         # For each population p
@@ -45,7 +55,7 @@ class PARALLEL_HILL_CLIMBER:
     def Spawn(self):
         self.children = {}
         for key in self.parents:
-            self.children[key] = deepcopy(self.parents[key])
+            self.children[key] = deepcopy(self.best)
             self.children[key].Set_ID(self.nextAvailableID)
             self.nextAvailableID = self.nextAvailableID + 1
 

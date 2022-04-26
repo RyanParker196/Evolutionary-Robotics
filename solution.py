@@ -15,9 +15,10 @@ class SOLUTION:
         self.weights = np.random.rand(c.numSensorNeurons, c.numMotorNeurons) * 2 - 1
 
     def Mutate(self):
-        randomRow = random.randint(0, c.numSensorNeurons - 1)
-        randomColumn = random.randint(0, c.numMotorNeurons - 1)
-        self.weights[randomRow, randomColumn] = random.random() * 2 - 1
+        for x in range(10):
+            randomRow = random.randint(0, c.numSensorNeurons - 1)
+            randomColumn = random.randint(0, c.numMotorNeurons - 1)
+            self.weights[randomRow, randomColumn] = random.random() * 2 - 1
 
     def Start_Simulation(self, directOrGui):
         # Generate robot

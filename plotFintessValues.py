@@ -10,7 +10,7 @@ print(averageMatrix)
 
 plt.plot(averageMatrix, linewidth=3)
 # plt.plot(fitnessMatrix.T, linestyle='dashed')
-plt.xticks([0,1,2,3])
+plt.xticks(list(range(0,c.numGenerations)))
 plt.xlabel("Generation")
 plt.ylabel("Fitness Value")
 

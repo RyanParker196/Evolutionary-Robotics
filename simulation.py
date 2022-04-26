@@ -19,7 +19,7 @@ class SIMULATION:
             print("No argument for optional GUI. Default=Direct")
             self.physicsClient = p.connect(p.DIRECT)
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
-        p.setGravity(0,0,-9.8)
+        p.setGravity(0,0,-59.8)
 
         self.world = WORLD()
         
