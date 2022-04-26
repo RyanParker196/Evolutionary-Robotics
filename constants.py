@@ -11,7 +11,7 @@ motorJointRange = 0.3
 numSensorNeurons = 7
 numMotorNeurons = 6
 
-numGenerations = 10
+numGenerations = 4
 populationSize = 12
 numSteps = 500
 

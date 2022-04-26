@@ -1,7 +1,6 @@
 import os
 import random
 import time
-from turtle import pos
 import numpy as np
 import pyrosim.pyrosim as pyrosim
 import constants as c
@@ -46,6 +45,7 @@ class SOLUTION:
         # Delete fitness
         os.remove('fitness{}.txt'.format(self.myID))
 
+    # THIS IS NOT CALLED 
     def Create_World(self):
         pyrosim.Start_SDF("world.sdf")
 
