@@ -1,4 +1,3 @@
-import os
 import pybullet as p
 import constants as c
 import time
